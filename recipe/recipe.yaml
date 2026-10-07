@@ -13,9 +13,8 @@ source:
 
 build:
   number: 0
-  skip: win
   script:
-    file: build.sh
+    file: ${{ "build.bat" if win else "build.sh" }}
     env:
       SSE_FLAG: ${{ "--disable-sse2" if osx and arm64 else "" }} # https://github.com/openvenues/libpostal/pull/679
 
